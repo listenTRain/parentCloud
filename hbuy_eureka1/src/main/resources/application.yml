@@ -1,0 +1,16 @@
+server:
+  #注册中心的服务端口
+  port: 10086
+
+#配置注册中心1的名字
+spring:
+  application:
+    name: EurekaServer1
+
+eureka:
+  client:
+    service-url:
+      #配置访问的路径
+      defaultZone: http://127.0.0.1:10086/eureka
+            #允许注册中心自己注册自己
+            #register-with-eureka: true

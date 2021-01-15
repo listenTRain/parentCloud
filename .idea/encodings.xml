@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_buycar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_eureka1" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_eureka2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_model" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_mongodb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_orders" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_register" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_seckill" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_solr" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_sso" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_web_consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_web_product" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_web_provider1" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_web_provider2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hbuy_zuul" charset="UTF-8" />
+  </component>
+</project>

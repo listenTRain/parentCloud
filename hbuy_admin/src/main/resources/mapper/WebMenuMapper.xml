@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.java.admin.mapper.WebMenuMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.java.model.WebMenuEntity" id="webMenuMap">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="url" column="url"/>
+        <result property="menutype" column="menuType"/>
+        <result property="updatetime" column="updateTime"/>
+    </resultMap>
+  
+  <!--要查询的字段-->  
+  <sql id="sel_WebMenuColumns_List" > 
+  	  id ,        
+  title ,        
+  url ,        
+   menuType  ,        
+   updateTime          
+  
+  </sql>
+  
+  <!--要添加的字段-->
+  <sql id="ins_WebMenuColumns_List" >
+       #{id},   #{title},   #{url},   #{menutype},   #{updatetime}   </sql> 
+  
+  <!--要修改的字段-->
+  <sql id="upd_WebMenuColumns_List" >
+    <set>
+    <if test="t.title != null">title = #{t.title}, </if>
+    <if test="t.url != null">url = #{t.url}, </if>
+    <if test="t.menutype != null">menuType = #{t.menutype}, </if>
+    <if test="t.updatetime != null">updateTime = #{t.updatetime}</if>
+	</set>
+	where id = #{t.id}
+  </sql> 
+  
+  <!--定义删除的条件-->
+  <sql id="del_WebMenuPramas_List">
+    <where>
+    <if test="t.id != null">and id = #{t.id}</if>
+    <if test="t.title != null">and title = #{t.title}</if>
+    <if test="t.url != null">and url = #{t.url}</if>
+    <if test="t.menutype != null">and menuType = #{t.menutype}</if>
+    <if test="t.updatetime != null">and updateTime = #{t.updatetime}</if>
+	</where>
+  </sql> 
+  
+  <!--定义查询的条件-->
+  <sql id="sel_WebMenuPramas_List">
+    <where>
+    <if test="t.id != null">and id = #{t.id}</if>
+    <if test="t.title != null">and title = #{t.title}</if>
+    <if test="t.url != null">and url = #{t.url}</if>
+    <if test="t.menutype != null">and menuType = #{t.menutype}</if>
+    <if test="t.updatetime != null">and updateTime = #{t.updatetime}</if>
+	</where>
+  </sql>
+
+    <!--添加-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into web_menu values (<include refid="ins_WebMenuColumns_List" />)
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        update web_menu <include refid="upd_WebMenuColumns_List" />
+    </update>
+
+    <!--根据条件删除-->
+    <delete id="delete">
+        delete from web_menu <include refid="del_WebMenuPramas_List" />
+    </delete>
+
+    <!--批量删除-->
+    <delete id="deleteBatch">
+        delete from web_menu where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--根据主键id查询单个对象-->
+	<select id="queryObjectById" resultMap="webMenuMap">
+		select  <include refid="sel_WebMenuColumns_List" />  from web_menu where id = #{id}
+	</select>
+	
+	<!--查询所有对象-->
+	<select id="queryAll" resultMap="webMenuMap">
+		select  <include refid="sel_WebMenuColumns_List" />  from web_menu
+    </select>
+
+    <!--根据条件（无条件）查询多个对象-->
+	<select id="queryManyByPramas" resultMap="webMenuMap">
+		select  <include refid="sel_WebMenuColumns_List" />  from web_menu <include refid="sel_WebMenuPramas_List" />
+	</select>
+	
+	<!--根据条件（无条件）分页查询-->
+	<select id="queryListByPramas" resultMap="webMenuMap">
+		select  <include refid="sel_WebMenuColumns_List" />  from web_menu <include refid="sel_WebMenuPramas_List" /> order by id desc
+	</select>
+
+    <!--根据条件查询单条数据-->
+    <select id="queryObjectByPramas" resultMap="webMenuMap">
+        select  <include refid="sel_WebMenuColumns_List" />  from web_menu <include refid="sel_WebMenuPramas_List" />
+    </select>
+	
+	<!--根据条件（无条件）查询数据条数-->
+ 	<select id="queryTotalByPramas" resultType="java.lang.Long">
+		select count(*) from web_menu <include refid="sel_WebMenuPramas_List" />
+	</select>
+	
+
+
+</mapper>

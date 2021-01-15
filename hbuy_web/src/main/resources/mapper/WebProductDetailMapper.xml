@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.java.web.mapper.WebProductDetailMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="WebProductDetailEntity" id="webProductDetailMap">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="subtitle" column="subTitle"/>
+        <result property="price" column="price"/>
+        <result property="color" column="color"/>
+        <result property="type" column="type"/>
+        <result property="num" column="num"/>
+        <result property="typeid" column="typeId"/>
+        <result property="href" column="href"/>
+        <result property="updatetime" column="updateTime"/>
+        <result property="avatorimg" column="avatorImg"/>
+    </resultMap>
+  
+  <!--要查询的字段-->  
+  <sql id="sel_WebProductDetailColumns_List" > 
+  	  id ,        
+  title ,        
+   subTitle  ,        
+  price ,        
+  color ,        
+  type ,        
+  num ,        
+   typeId  ,        
+  href ,        
+   updateTime  ,        
+   avatorImg          
+  
+  </sql>
+  
+  <!--要添加的字段-->
+  <sql id="ins_WebProductDetailColumns_List" >
+       #{id},   #{title},   #{subtitle},   #{price},   #{color},   #{type},   #{num},   #{typeid},   #{href},   #{updatetime},   #{avatorimg}   </sql> 
+  
+  <!--要修改的字段-->
+  <sql id="upd_WebProductDetailColumns_List" >
+    <set>
+    <if test="t.title != null">title = #{t.title}, </if>
+    <if test="t.subtitle != null">subTitle = #{t.subtitle}, </if>
+    <if test="t.price != null">price = #{t.price}, </if>
+    <if test="t.color != null">color = #{t.color}, </if>
+    <if test="t.type != null">type = #{t.type}, </if>
+    <if test="t.num != null">num = #{t.num}, </if>
+    <if test="t.typeid != null">typeId = #{t.typeid}, </if>
+    <if test="t.href != null">href = #{t.href}, </if>
+    <if test="t.updatetime != null">updateTime = #{t.updatetime}, </if>
+    <if test="t.avatorimg != null">avatorImg = #{t.avatorimg}</if>
+	</set>
+	where id = #{t.id}
+  </sql> 
+  
+  <!--定义删除的条件-->
+  <sql id="del_WebProductDetailPramas_List">
+    <where>
+    <if test="t.id != null">and id = #{t.id}</if>
+    <if test="t.title != null">and title = #{t.title}</if>
+    <if test="t.subtitle != null">and subTitle = #{t.subtitle}</if>
+    <if test="t.price != null">and price = #{t.price}</if>
+    <if test="t.color != null">and color = #{t.color}</if>
+    <if test="t.type != null">and type = #{t.type}</if>
+    <if test="t.num != null">and num = #{t.num}</if>
+    <if test="t.typeid != null">and typeId = #{t.typeid}</if>
+    <if test="t.href != null">and href = #{t.href}</if>
+    <if test="t.updatetime != null">and updateTime = #{t.updatetime}</if>
+    <if test="t.avatorimg != null">and avatorImg = #{t.avatorimg}</if>
+	</where>
+  </sql> 
+  
+  <!--定义查询的条件-->
+  <sql id="sel_WebProductDetailPramas_List">
+    <where>
+    <if test="t.id != null">and id = #{t.id}</if>
+    <if test="t.title != null">and title = #{t.title}</if>
+    <if test="t.subtitle != null">and subTitle = #{t.subtitle}</if>
+    <if test="t.price != null">and price = #{t.price}</if>
+    <if test="t.color != null">and color = #{t.color}</if>
+    <if test="t.type != null">and type = #{t.type}</if>
+    <if test="t.num != null">and num = #{t.num}</if>
+    <if test="t.typeid != null">and typeId = #{t.typeid}</if>
+    <if test="t.href != null">and href = #{t.href}</if>
+    <if test="t.updatetime != null">and updateTime = #{t.updatetime}</if>
+    <if test="t.avatorimg != null">and avatorImg = #{t.avatorimg}</if>
+	</where>
+  </sql>
+
+    <!--添加-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into web_product_detail values (<include refid="ins_WebProductDetailColumns_List" />)
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        update web_product_detail <include refid="upd_WebProductDetailColumns_List" />
+    </update>
+
+    <!--根据条件删除-->
+    <delete id="delete">
+        delete from web_product_detail <include refid="del_WebProductDetailPramas_List" />
+    </delete>
+
+    <!--批量删除-->
+    <delete id="deleteBatch">
+        delete from web_product_detail where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--根据主键id查询单个对象-->
+	<select id="queryObjectById" resultMap="webProductDetailMap">
+		select  <include refid="sel_WebProductDetailColumns_List" />  from web_product_detail where id = #{id}
+	</select>
+	
+	<!--查询所有对象-->
+	<select id="queryAll" resultMap="webProductDetailMap">
+		select  <include refid="sel_WebProductDetailColumns_List" />  from web_product_detail
+    </select>
+
+    <!--根据条件（无条件）查询多个对象-->
+	<select id="queryManyByPramas" resultMap="webProductDetailMap">
+		select  <include refid="sel_WebProductDetailColumns_List" />  from web_product_detail <include refid="sel_WebProductDetailPramas_List" />
+	</select>
+	
+	<!--根据条件（无条件）分页查询-->
+	<select id="queryListByPramas" resultMap="webProductDetailMap">
+		select  <include refid="sel_WebProductDetailColumns_List" />  from web_product_detail <include refid="sel_WebProductDetailPramas_List" /> order by id desc
+	</select>
+
+    <!--根据条件查询单条数据-->
+    <select id="queryObjectByPramas" resultMap="webProductDetailMap">
+        select  <include refid="sel_WebProductDetailColumns_List" />  from web_product_detail <include refid="sel_WebProductDetailPramas_List" />
+    </select>
+	
+	<!--根据条件（无条件）查询数据条数-->
+ 	<select id="queryTotalByPramas" resultType="java.lang.Long">
+		select count(*) from web_product_detail <include refid="sel_WebProductDetailPramas_List" />
+	</select>
+	
+
+
+</mapper>

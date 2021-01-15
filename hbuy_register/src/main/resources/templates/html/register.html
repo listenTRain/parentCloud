@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <base th:href="${#request.getScheme()}+'://'+${#request.getServerName()}+':'+${#request.getServerPort()}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--引入layui的样式文件-->
+    <link rel="stylesheet" href="/static/lib/layui/css/layui.css">
+    <!--引入layui的js文件-->
+    <script src="/static/lib/layui/layui.js"></script>
+	<link type="text/css" rel="stylesheet" href="/static/css/style.css" />
+    <!--[if IE 6]>
+    <script src="/static/js/iepng.js" type="text/javascript"></script>
+        <script type="text/javascript">
+           EvPNG.fix('div, ul, img, li, input, a'); 
+        </script>
+    <![endif]-->    
+    <script type="text/javascript" src="/static/js/jquery-1.11.1.min_044d0927.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.bxslider_e88acd1b.js"></script>
+    
+    <script type="text/javascript" src="/static/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="/static/js/menu.js"></script>    
+        
+	<script type="text/javascript" src="/static/js/select.js"></script>
+    
+	<script type="text/javascript" src="/static/js/lrscroll.js"></script>
+    
+    <script type="text/javascript" src="/static/js/iban.js"></script>
+    <script type="text/javascript" src="/static/js/fban.js"></script>
+    <script type="text/javascript" src="/static/js/f_ban.js"></script>
+    <script type="text/javascript" src="/static/js/mban.js"></script>
+    <script type="text/javascript" src="/static/js/bban.js"></script>
+    <script type="text/javascript" src="/static/js/hban.js"></script>
+    <script type="text/javascript" src="/static/js/tban.js"></script>
+    
+	<script type="text/javascript" src="/static/js/lrscroll_1.js"></script>
+    
+    
+<title>易买网注册页面</title>
+</head>
+<body>  
+<!--Begin Header Begin-->
+<div class="soubg">
+	<div class="sou">
+        <span class="fr">
+        	<span class="fl">你好，请<a href="Login.html">登录</a>&nbsp; <a href="Regist.html" style="color:#ff4e00;">免费注册</a>&nbsp; </span>
+            <span class="fl">|&nbsp;关注我们：</span>
+            <span class="s_sh"><a href="#" class="sh1">新浪</a><a href="#" class="sh2">微信</a></span>
+            <span class="fr">|&nbsp;<a href="#">手机版&nbsp;<img src="/static/images/s_tel.png" align="absmiddle" /></a></span>
+        </span>
+    </div>
+</div>
+<!--End Header End--> 
+<!--Begin Login Begin-->
+<div class="log_bg">	
+    <div class="top">
+        <div class="logo"><a href="Index.html"><img src="/static/images/logo.png" /></a></div>
+    </div>
+	<div class="regist">
+    	<div class="log_img"><img src="/static/images/l_img.png" width="611" height="290" /></div>
+		<div class="reg_c">
+        	<form class="layui-form" action="">
+            <table border="0" style="width:420px; font-size:14px; margin-top:20px;" cellspacing="0" cellpadding="0">
+              <tr height="50" valign="top">
+              	<td width="95">&nbsp;</td>
+                <td>
+                	<span class="fl" style="font-size:24px;">注册</span>
+                    <span class="fr">已有商城账号，<a href="Login.html" style="color:#ff4e00;">我要登录</a></span>
+                </td>
+              </tr>
+              <tr height="50">
+                <td align="right"><font color="#ff4e00">*</font>&nbsp;用户名 &nbsp;</td>
+                <td><input id="username" name="username" type="text" lay-verify="required|username" value="" class="l_user" placeholder="请输入用户名"/></td>
+              </tr>
+              <tr height="50">
+                <td align="right"><font color="#ff4e00">*</font>&nbsp;密码 &nbsp;</td>
+                <td><input id="pwd" type="password" name="pwd" lay-verify="required|pwd" value="" class="l_pwd" placeholder="请输入密码"/></td>
+              </tr>
+              <tr height="50">
+                <td align="right"><font color="#ff4e00">*</font>&nbsp;确认密码 &nbsp;</td>
+                <td><input id="pwd2" type="password" value="" lay-verify="required|pwd|pwd2" class="l_pwd" placeholder="请再次输入密码"/></td>
+              </tr>
+              <tr height="50">
+                <td align="right"><font color="#ff4e00">*</font>&nbsp;手机 &nbsp;</td>
+                <td><input id="phone" type="text" value="" lay-verify="required|phone|regPhone" name="phone" class="l_tel" placeholder="请输入手机号"/>
+                </td>
+              </tr>
+              <tr height="50">
+                <td align="right"> <font color="#ff4e00" >*</font>&nbsp;验证码 &nbsp;</td>
+                <td>
+                    <input type="text" id="userSms" value="" class="l_ipt" lay-verify="required|viyzm" placeholder="请输入验证码"/>&nbsp;&nbsp;
+                    <input type="button" class="layui-btn layui-btn-sm layui-btn-normal" value="发送短信" id="send_btn"/>
+                </td>
+              </tr>
+
+                <tr height="50">
+                    <td align="right"><font color="#ff4e00">*</font>&nbsp;邮箱 &nbsp;</td>
+                    <td><input id="email" name="email" type="text" value="" lay-verify="required|email" class="l_pwd" placeholder="请输入邮箱"/></td>
+                </tr>
+
+                <tr height="60">
+                    <td>&nbsp;</td>
+                    <td><input type="button" id="saveUserBtn" value="立即注册" class="log_btn" lay-submit="" lay-filter="demo2"/></td>
+                </tr>
+
+            </table>
+            </form>
+        </div>
+    </div>
+</div>
+<!--End Login End--> 
+<!--Begin Footer Begin-->
+<div class="btmbg">
+    <div class="btm">
+        备案/许可证编号：蜀ICP备12009302号-1-www.dingguagua.com   Copyright © 2015-2018 尤洪商城网 All Rights Reserved. 复制必究 , Technical Support: Dgg Group <br />
+        <img src="/static/images/b_1.gif" width="98" height="33" /><img src="/static/images/b_2.gif" width="98" height="33" /><img src="/static/images/b_3.gif" width="98" height="33" /><img src="/static/images/b_4.gif" width="98" height="33" /><img src="/static/images/b_5.gif" width="98" height="33" /><img src="/static/images/b_6.gif" width="98" height="33" />
+    </div>    	
+</div>
+<!--End Footer End -->
+<script type="text/javascript" src="/static/conjs/register.js"></script>
+</body>
+
+
+<!--[if IE 6]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+</html>

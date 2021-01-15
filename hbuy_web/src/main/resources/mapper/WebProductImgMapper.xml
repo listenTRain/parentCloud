@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.java.web.mapper.WebProductImgMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="WebProductImgEntity" id="webProductImgMap">
+        <result property="id" column="id"/>
+        <result property="imgurl" column="imgUrl"/>
+        <result property="productid" column="productId"/>
+    </resultMap>
+  
+  <!--要查询的字段-->  
+  <sql id="sel_WebProductImgColumns_List" > 
+  	  id ,        
+   imgUrl  ,        
+   productId          
+  
+  </sql>
+  
+  <!--要添加的字段-->
+  <sql id="ins_WebProductImgColumns_List" >
+       #{id},   #{imgurl},   #{productid}   </sql> 
+  
+  <!--要修改的字段-->
+  <sql id="upd_WebProductImgColumns_List" >
+    <set>
+    <if test="t.imgurl != null">imgUrl = #{t.imgurl}, </if>
+    <if test="t.productid != null">productId = #{t.productid}</if>
+	</set>
+	where id = #{t.id}
+  </sql> 
+  
+  <!--定义删除的条件-->
+  <sql id="del_WebProductImgPramas_List">
+    <where>
+    <if test="t.id != null">and id = #{t.id}</if>
+    <if test="t.imgurl != null">and imgUrl = #{t.imgurl}</if>
+    <if test="t.productid != null">and productId = #{t.productid}</if>
+	</where>
+  </sql> 
+  
+  <!--定义查询的条件-->
+  <sql id="sel_WebProductImgPramas_List">
+    <where>
+    <if test="t.id != null">and id = #{t.id}</if>
+    <if test="t.imgurl != null">and imgUrl = #{t.imgurl}</if>
+    <if test="t.productid != null">and productId = #{t.productid}</if>
+	</where>
+  </sql>
+
+    <!--添加-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into web_product_img values (<include refid="ins_WebProductImgColumns_List" />)
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        update web_product_img <include refid="upd_WebProductImgColumns_List" />
+    </update>
+
+    <!--根据条件删除-->
+    <delete id="delete">
+        delete from web_product_img <include refid="del_WebProductImgPramas_List" />
+    </delete>
+
+    <!--批量删除-->
+    <delete id="deleteBatch">
+        delete from web_product_img where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--根据主键id查询单个对象-->
+	<select id="queryObjectById" resultMap="webProductImgMap">
+		select  <include refid="sel_WebProductImgColumns_List" />  from web_product_img where id = #{id}
+	</select>
+	
+	<!--查询所有对象-->
+	<select id="queryAll" resultMap="webProductImgMap">
+		select  <include refid="sel_WebProductImgColumns_List" />  from web_product_img
+    </select>
+
+    <!--根据条件（无条件）查询多个对象-->
+	<select id="queryManyByPramas" resultMap="webProductImgMap">
+		select  <include refid="sel_WebProductImgColumns_List" />  from web_product_img <include refid="sel_WebProductImgPramas_List" />
+	</select>
+	
+	<!--根据条件（无条件）分页查询-->
+	<select id="queryListByPramas" resultMap="webProductImgMap">
+		select  <include refid="sel_WebProductImgColumns_List" />  from web_product_img <include refid="sel_WebProductImgPramas_List" /> order by id desc
+	</select>
+
+    <!--根据条件查询单条数据-->
+    <select id="queryObjectByPramas" resultMap="webProductImgMap">
+        select  <include refid="sel_WebProductImgColumns_List" />  from web_product_img <include refid="sel_WebProductImgPramas_List" />
+    </select>
+	
+	<!--根据条件（无条件）查询数据条数-->
+ 	<select id="queryTotalByPramas" resultType="java.lang.Long">
+		select count(*) from web_product_img <include refid="sel_WebProductImgPramas_List" />
+	</select>
+	
+
+
+</mapper>

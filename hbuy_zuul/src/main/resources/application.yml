@@ -1,0 +1,19 @@
+server:
+  #网关访问的端口
+  port: 8080
+spring:
+  application:
+    name: hbuy_zuul
+eureka:
+  client:
+    service-url:
+      #配置注册的路径
+      defaultZone: http://127.0.0.1:10086/eureka
+
+#配置对外访问的网关
+zuul:
+  routes:
+    #配置hbuy_admin模块的对外访问路径
+    hbuy_admin: /admin/**
+    #配置hbuy_web模块的对外访问路径
+    hbuy_web: /web/**

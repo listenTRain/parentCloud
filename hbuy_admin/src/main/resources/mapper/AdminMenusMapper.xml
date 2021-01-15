@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.java.admin.mapper.AdminMenusMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="AdminMenusEntity" id="adminMenusMap">
+        <result property="id" column="id"/>
+        <result property="text" column="text"/>
+        <result property="iconcls" column="iconCls"/>
+        <result property="url" column="url"/>
+        <result property="state" column="state"/>
+        <result property="parentid" column="parentId"/>
+        <result property="flag" column="flag"/>
+    </resultMap>
+  
+  <!--要查询的字段-->  
+  <sql id="sel_AdminMenusColumns_List" > 
+  	  id ,        
+  text ,        
+   iconCls  ,        
+  url ,        
+  state ,        
+   parentId  ,        
+  flag         
+  
+  </sql>
+  
+  <!--要添加的字段-->
+  <sql id="ins_AdminMenusColumns_List" >
+       #{id},   #{text},   #{iconcls},   #{url},   #{state},   #{parentid},   #{flag}   </sql> 
+  
+  <!--要修改的字段-->
+  <sql id="upd_AdminMenusColumns_List" >
+    <set>
+    <if test="t.text != null">text = #{t.text}, </if>
+    <if test="t.iconcls != null">iconCls = #{t.iconcls}, </if>
+    <if test="t.url != null">url = #{t.url}, </if>
+    <if test="t.state != null">state = #{t.state}, </if>
+    <if test="t.parentid != null">parentId = #{t.parentid}, </if>
+    <if test="t.flag != null">flag = #{t.flag}</if>
+	</set>
+	where id = #{t.id}
+  </sql> 
+  
+  <!--定义删除的条件-->
+  <sql id="del_AdminMenusPramas_List">
+    <where>
+    <if test="t.id != null">and id = #{t.id}</if>
+    <if test="t.text != null">and text = #{t.text}</if>
+    <if test="t.iconcls != null">and iconCls = #{t.iconcls}</if>
+    <if test="t.url != null">and url = #{t.url}</if>
+    <if test="t.state != null">and state = #{t.state}</if>
+    <if test="t.parentid != null">and parentId = #{t.parentid}</if>
+    <if test="t.flag != null">and flag = #{t.flag}</if>
+	</where>
+  </sql> 
+  
+  <!--定义查询的条件-->
+  <sql id="sel_AdminMenusPramas_List">
+    <where>
+    <if test="t.id != null">and id = #{t.id}</if>
+    <if test="t.text != null">and text = #{t.text}</if>
+    <if test="t.iconcls != null">and iconCls = #{t.iconcls}</if>
+    <if test="t.url != null">and url = #{t.url}</if>
+    <if test="t.state != null">and state = #{t.state}</if>
+    <if test="t.parentid != null">and parentId = #{t.parentid}</if>
+    <if test="t.flag != null">and flag = #{t.flag}</if>
+	</where>
+  </sql>
+
+    <!--添加-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into admin_menus values (<include refid="ins_AdminMenusColumns_List" />)
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        update admin_menus <include refid="upd_AdminMenusColumns_List" />
+    </update>
+
+    <!--根据条件删除-->
+    <delete id="delete">
+        delete from admin_menus <include refid="del_AdminMenusPramas_List" />
+    </delete>
+
+    <!--批量删除-->
+    <delete id="deleteBatch">
+        delete from admin_menus where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--根据主键id查询单个对象-->
+	<select id="queryObjectById" resultMap="adminMenusMap">
+		select  <include refid="sel_AdminMenusColumns_List" />  from admin_menus where id = #{id}
+	</select>
+	
+	<!--查询所有对象-->
+	<select id="queryAll" resultMap="adminMenusMap">
+		select  <include refid="sel_AdminMenusColumns_List" />  from admin_menus
+    </select>
+
+    <!--根据条件（无条件）查询多个对象-->
+	<select id="queryManyByPramas" resultMap="adminMenusMap">
+		select  <include refid="sel_AdminMenusColumns_List" />  from admin_menus <include refid="sel_AdminMenusPramas_List" />
+	</select>
+	
+	<!--根据条件（无条件）分页查询-->
+	<select id="queryListByPramas" resultMap="adminMenusMap">
+		select  <include refid="sel_AdminMenusColumns_List" />  from admin_menus <include refid="sel_AdminMenusPramas_List" /> order by id desc
+	</select>
+
+    <!--根据条件查询单条数据-->
+    <select id="queryObjectByPramas" resultMap="adminMenusMap">
+        select  <include refid="sel_AdminMenusColumns_List" />  from admin_menus <include refid="sel_AdminMenusPramas_List" />
+    </select>
+	
+	<!--根据条件（无条件）查询数据条数-->
+ 	<select id="queryTotalByPramas" resultType="java.lang.Long">
+		select count(*) from admin_menus <include refid="sel_AdminMenusPramas_List" />
+	</select>
+	
+
+
+</mapper>

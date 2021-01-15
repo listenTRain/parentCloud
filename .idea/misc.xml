@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/hbuy_admin" />
+    <file type="web" url="file://$PROJECT_DIR$/hbuy_buycar" />
+    <file type="web" url="file://$PROJECT_DIR$/hbuy_eureka1" />
+    <file type="web" url="file://$PROJECT_DIR$/hbuy_eureka2" />
+    <file type="web" url="file://$PROJECT_DIR$/hbuy_orders" />
+    <file type="web" url="file://$PROJECT_DIR$/hbuy_register" />
+    <file type="web" url="file://$PROJECT_DIR$/hbuy_seckill" />
+    <file type="web" url="file://$PROJECT_DIR$/hbuy_solr" />
+    <file type="web" url="file://$PROJECT_DIR$/hbuy_sso" />
+    <file type="web" url="file://$PROJECT_DIR$/hbuy_web" />
+    <file type="web" url="file://$PROJECT_DIR$/hbuy_web_consumer" />
+    <file type="web" url="file://$PROJECT_DIR$/hbuy_web_product" />
+    <file type="web" url="file://$PROJECT_DIR$/hbuy_web_provider1" />
+    <file type="web" url="file://$PROJECT_DIR$/hbuy_web_provider2" />
+    <file type="web" url="file://$PROJECT_DIR$/hbuy_zuul" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="hbuy_zuul:war">
+    <output-path>$PROJECT_DIR$/hbuy_zuul/target</output-path>
+    <root id="archive" name="hbuy_zuul-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="hbuy_zuul:war exploded" />
+    </root>
+  </artifact>
+</component>

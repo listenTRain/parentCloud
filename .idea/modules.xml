@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hbuy_admin/hbuy_admin.iml" filepath="$PROJECT_DIR$/hbuy_admin/hbuy_admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_buycar/hbuy_buycar.iml" filepath="$PROJECT_DIR$/hbuy_buycar/hbuy_buycar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_eureka1/hbuy_eureka1.iml" filepath="$PROJECT_DIR$/hbuy_eureka1/hbuy_eureka1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_eureka2/hbuy_eureka2.iml" filepath="$PROJECT_DIR$/hbuy_eureka2/hbuy_eureka2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_model/hbuy_model.iml" filepath="$PROJECT_DIR$/hbuy_model/hbuy_model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_mongodb/hbuy_mongodb.iml" filepath="$PROJECT_DIR$/hbuy_mongodb/hbuy_mongodb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_orders/hbuy_orders.iml" filepath="$PROJECT_DIR$/hbuy_orders/hbuy_orders.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_register/hbuy_register.iml" filepath="$PROJECT_DIR$/hbuy_register/hbuy_register.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_seckill/hbuy_seckill.iml" filepath="$PROJECT_DIR$/hbuy_seckill/hbuy_seckill.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_service/hbuy_service.iml" filepath="$PROJECT_DIR$/hbuy_service/hbuy_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_solr/hbuy_solr.iml" filepath="$PROJECT_DIR$/hbuy_solr/hbuy_solr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_sso/hbuy_sso.iml" filepath="$PROJECT_DIR$/hbuy_sso/hbuy_sso.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_web/hbuy_web.iml" filepath="$PROJECT_DIR$/hbuy_web/hbuy_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_web_consumer/hbuy_web_consumer.iml" filepath="$PROJECT_DIR$/hbuy_web_consumer/hbuy_web_consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_web_product/hbuy_web_product.iml" filepath="$PROJECT_DIR$/hbuy_web_product/hbuy_web_product.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_web_provider1/hbuy_web_provider1.iml" filepath="$PROJECT_DIR$/hbuy_web_provider1/hbuy_web_provider1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_web_provider2/hbuy_web_provider2.iml" filepath="$PROJECT_DIR$/hbuy_web_provider2/hbuy_web_provider2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbuy_zuul/hbuy_zuul.iml" filepath="$PROJECT_DIR$/hbuy_zuul/hbuy_zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parentCloud.iml" filepath="$PROJECT_DIR$/parentCloud.iml" />
+    </modules>
+  </component>
+</project>

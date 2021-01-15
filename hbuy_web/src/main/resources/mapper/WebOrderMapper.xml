@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.java.web.mapper.WebOrderMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="WebOrderEntity" id="webOrderMap">
+        <result property="id" column="id"/>
+        <result property="orderno" column="orderNo"/>
+        <result property="userid" column="userId"/>
+        <result property="orderstatus" column="orderStatus"/>
+        <result property="cost" column="cost"/>
+        <result property="secid" column="secId"/>
+        <result property="proids" column="proIds"/>
+        <result property="createdate" column="createDate"/>
+        <result property="enddate" column="endDate"/>
+        <result property="flag" column="flag"/>
+    </resultMap>
+  
+  <!--要查询的字段-->  
+  <sql id="sel_WebOrderColumns_List" > 
+  	  id ,        
+   orderNo  ,        
+   userId  ,        
+   orderStatus  ,        
+  cost ,        
+   secId  ,        
+   proIds  ,        
+   createDate  ,        
+   endDate  ,        
+  flag         
+  
+  </sql>
+  
+  <!--要添加的字段-->
+  <sql id="ins_WebOrderColumns_List" >
+       #{id},   #{orderno},   #{userid},   #{orderstatus},   #{cost},   #{secid},   #{proids},   #{createdate},   #{enddate},   #{flag}   </sql> 
+  
+  <!--要修改的字段-->
+  <sql id="upd_WebOrderColumns_List" >
+    <set>
+    <if test="t.orderno != null">orderNo = #{t.orderno}, </if>
+    <if test="t.userid != null">userId = #{t.userid}, </if>
+    <if test="t.orderstatus != null">orderStatus = #{t.orderstatus}, </if>
+    <if test="t.cost != null">cost = #{t.cost}, </if>
+    <if test="t.secid != null">secId = #{t.secid}, </if>
+    <if test="t.proids != null">proIds = #{t.proids}, </if>
+    <if test="t.createdate != null">createDate = #{t.createdate}, </if>
+    <if test="t.enddate != null">endDate = #{t.enddate}, </if>
+    <if test="t.flag != null">flag = #{t.flag}</if>
+	</set>
+	where id = #{t.id}
+  </sql> 
+  
+  <!--定义删除的条件-->
+  <sql id="del_WebOrderPramas_List">
+    <where>
+    <if test="t.id != null">and id = #{t.id}</if>
+    <if test="t.orderno != null">and orderNo = #{t.orderno}</if>
+    <if test="t.userid != null">and userId = #{t.userid}</if>
+    <if test="t.orderstatus != null">and orderStatus = #{t.orderstatus}</if>
+    <if test="t.cost != null">and cost = #{t.cost}</if>
+    <if test="t.secid != null">and secId = #{t.secid}</if>
+    <if test="t.proids != null">and proIds = #{t.proids}</if>
+    <if test="t.createdate != null">and createDate = #{t.createdate}</if>
+    <if test="t.enddate != null">and endDate = #{t.enddate}</if>
+    <if test="t.flag != null">and flag = #{t.flag}</if>
+	</where>
+  </sql> 
+  
+  <!--定义查询的条件-->
+  <sql id="sel_WebOrderPramas_List">
+    <where>
+    <if test="t.id != null">and id = #{t.id}</if>
+    <if test="t.orderno != null">and orderNo = #{t.orderno}</if>
+    <if test="t.userid != null">and userId = #{t.userid}</if>
+    <if test="t.orderstatus != null">and orderStatus = #{t.orderstatus}</if>
+    <if test="t.cost != null">and cost = #{t.cost}</if>
+    <if test="t.secid != null">and secId = #{t.secid}</if>
+    <if test="t.proids != null">and proIds = #{t.proids}</if>
+    <if test="t.createdate != null">and createDate = #{t.createdate}</if>
+    <if test="t.enddate != null">and endDate = #{t.enddate}</if>
+    <if test="t.flag != null">and flag = #{t.flag}</if>
+	</where>
+  </sql>
+
+    <!--添加-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into web_order values (<include refid="ins_WebOrderColumns_List" />)
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        update web_order <include refid="upd_WebOrderColumns_List" />
+    </update>
+
+    <!--根据条件删除-->
+    <delete id="delete">
+        delete from web_order <include refid="del_WebOrderPramas_List" />
+    </delete>
+
+    <!--批量删除-->
+    <delete id="deleteBatch">
+        delete from web_order where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--根据主键id查询单个对象-->
+	<select id="queryObjectById" resultMap="webOrderMap">
+		select  <include refid="sel_WebOrderColumns_List" />  from web_order where id = #{id}
+	</select>
+	
+	<!--查询所有对象-->
+	<select id="queryAll" resultMap="webOrderMap">
+		select  <include refid="sel_WebOrderColumns_List" />  from web_order
+    </select>
+
+    <!--根据条件（无条件）查询多个对象-->
+	<select id="queryManyByPramas" resultMap="webOrderMap">
+		select  <include refid="sel_WebOrderColumns_List" />  from web_order <include refid="sel_WebOrderPramas_List" />
+	</select>
+	
+	<!--根据条件（无条件）分页查询-->
+	<select id="queryListByPramas" resultMap="webOrderMap">
+		select  <include refid="sel_WebOrderColumns_List" />  from web_order <include refid="sel_WebOrderPramas_List" /> order by id desc
+	</select>
+
+    <!--根据条件查询单条数据-->
+    <select id="queryObjectByPramas" resultMap="webOrderMap">
+        select  <include refid="sel_WebOrderColumns_List" />  from web_order <include refid="sel_WebOrderPramas_List" />
+    </select>
+	
+	<!--根据条件（无条件）查询数据条数-->
+ 	<select id="queryTotalByPramas" resultType="java.lang.Long">
+		select count(*) from web_order <include refid="sel_WebOrderPramas_List" />
+	</select>
+	
+
+
+</mapper>

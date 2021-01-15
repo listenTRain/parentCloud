@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="hbuy_seckill:war">
+    <output-path>$PROJECT_DIR$/hbuy_seckill/target</output-path>
+    <root id="archive" name="hbuy_seckill-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="hbuy_seckill:war exploded" />
+    </root>
+  </artifact>
+</component>

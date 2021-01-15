@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="hbuy_admin:war">
+    <output-path>$PROJECT_DIR$/hbuy_admin/target</output-path>
+    <root id="archive" name="hbuy_admin-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="hbuy_admin:war exploded" />
+    </root>
+  </artifact>
+</component>

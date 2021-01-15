@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.java.admin.mapper.AdminUserMenuMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="AdminUserMenuEntity" id="adminUserMenuMap">
+        <result property="userid" column="userId"/>
+        <result property="menuid" column="menuId"/>
+        <result property="umid" column="umId"/>
+    </resultMap>
+  
+  <!--要查询的字段-->  
+  <sql id="sel_AdminUserMenuColumns_List" > 
+  	   userId  ,        
+   menuId  ,        
+   umId          
+  
+  </sql>
+  
+  <!--要添加的字段-->
+  <sql id="ins_AdminUserMenuColumns_List" >
+       #{userid},   #{menuid},   #{umid}   </sql> 
+  
+  <!--要修改的字段-->
+  <sql id="upd_AdminUserMenuColumns_List" >
+    <set>
+    <if test="t.userid != null">userId = #{t.userid}, </if>
+    <if test="t.menuid != null">menuId = #{t.menuid}, </if>
+	</set>
+	where umId = #{t.umid}
+  </sql> 
+  
+  <!--定义删除的条件-->
+  <sql id="del_AdminUserMenuPramas_List">
+    <where>
+    <if test="t.userid != null">and userId = #{t.userid}</if>
+    <if test="t.menuid != null">and menuId = #{t.menuid}</if>
+    <if test="t.umid != null">and umId = #{t.umid}</if>
+	</where>
+  </sql> 
+  
+  <!--定义查询的条件-->
+  <sql id="sel_AdminUserMenuPramas_List">
+    <where>
+    <if test="t.userid != null">and userId = #{t.userid}</if>
+    <if test="t.menuid != null">and menuId = #{t.menuid}</if>
+    <if test="t.umid != null">and umId = #{t.umid}</if>
+	</where>
+  </sql>
+
+    <!--添加-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="umid">
+        insert into admin_user_menu values (<include refid="ins_AdminUserMenuColumns_List" />)
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        update admin_user_menu <include refid="upd_AdminUserMenuColumns_List" />
+    </update>
+
+    <!--根据条件删除-->
+    <delete id="delete">
+        delete from admin_user_menu <include refid="del_AdminUserMenuPramas_List" />
+    </delete>
+
+    <!--批量删除-->
+    <delete id="deleteBatch">
+        delete from admin_user_menu where umId in
+        <foreach item="umid" collection="array" open="(" separator="," close=")">
+            #{umid}
+        </foreach>
+    </delete>
+
+    <!--根据主键id查询单个对象-->
+	<select id="queryObjectById" resultMap="adminUserMenuMap">
+		select  <include refid="sel_AdminUserMenuColumns_List" />  from admin_user_menu where umId = #{id}
+	</select>
+	
+	<!--查询所有对象-->
+	<select id="queryAll" resultMap="adminUserMenuMap">
+		select  <include refid="sel_AdminUserMenuColumns_List" />  from admin_user_menu
+    </select>
+
+    <!--根据条件（无条件）查询多个对象-->
+	<select id="queryManyByPramas" resultMap="adminUserMenuMap">
+		select  <include refid="sel_AdminUserMenuColumns_List" />  from admin_user_menu <include refid="sel_AdminUserMenuPramas_List" />
+	</select>
+	
+	<!--根据条件（无条件）分页查询-->
+	<select id="queryListByPramas" resultMap="adminUserMenuMap">
+		select  <include refid="sel_AdminUserMenuColumns_List" />  from admin_user_menu <include refid="sel_AdminUserMenuPramas_List" /> order by umid desc
+	</select>
+
+    <!--根据条件查询单条数据-->
+    <select id="queryObjectByPramas" resultMap="adminUserMenuMap">
+        select  <include refid="sel_AdminUserMenuColumns_List" />  from admin_user_menu <include refid="sel_AdminUserMenuPramas_List" />
+    </select>
+	
+	<!--根据条件（无条件）查询数据条数-->
+ 	<select id="queryTotalByPramas" resultType="java.lang.Long">
+		select count(*) from admin_user_menu <include refid="sel_AdminUserMenuPramas_List" />
+	</select>
+	
+
+
+</mapper>

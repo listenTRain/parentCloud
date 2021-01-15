@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="hbuy_solr:war">
+    <output-path>$PROJECT_DIR$/hbuy_solr/target</output-path>
+    <root id="archive" name="hbuy_solr-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="hbuy_solr:war exploded" />
+    </root>
+  </artifact>
+</component>
